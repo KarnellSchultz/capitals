@@ -25,37 +25,42 @@ export type CapitalGameStore = {
     gameStateSlices: GameStateSliceType[]
     setCountry: (country: Country) => void
     incrementHintCount: () => void
-    setGameStateSlices: () => void
+    setGameStateSlices: (init?: GameStateSliceType[]) => void
     setGameStatus: (gameStatus: GameStatusType) => void
     setGuesses: (guess: string) => void
+    selectValue: string
+    setSelectValue: (value: string) => void
+    errors: string[]
+    setErrors: (error: string) => void
 }
 
 export const useCapitalGameStore = create<CapitalGameStore>(set => ({
     country: getTodaysCountry(),
+    setCountry: country => set(state => ({ ...state, country })),
     gameStatus: GameStatus.PLAYING,
     guesses: [],
     hintCount: 0,
     gameStateSlices: [],
-    setCountry: country => set(state => ({ ...state, country })),
     incrementHintCount: () =>
         set(state => ({ ...state, hintCount: state.hintCount + 1 })),
-    setGameStateSlices: () =>
+    setGameStateSlices: init =>
         set(state => {
             const currentGuess =
                 [...state.guesses].pop()?.toLocaleLowerCase().trim() || ''
             const isCorrect =
                 currentGuess === state?.country.capital.toLocaleLowerCase()
+            const tempSlices = [
+                ...state.gameStateSlices,
+                {
+                    guesses: state.guesses,
+                    hintCount: state.hintCount,
+                    isCorrect,
+                    guess: currentGuess,
+                },
+            ]
             return {
                 ...state,
-                gameStateSlices: [
-                    ...state.gameStateSlices,
-                    {
-                        guesses: state.guesses,
-                        hintCount: state.hintCount,
-                        isCorrect,
-                        guess: currentGuess,
-                    },
-                ],
+                gameStateSlices: init ?? tempSlices,
             }
         }),
     setHintCount: () =>
@@ -71,4 +76,9 @@ export const useCapitalGameStore = create<CapitalGameStore>(set => ({
             ...state,
             guesses: [...state.guesses, guess.toLocaleLowerCase().trim()],
         })),
+    selectValue: '',
+    setSelectValue: value => set(state => ({ ...state, selectValue: value })),
+    errors: [],
+    setErrors: error =>
+        set(state => ({ ...state, errors: [...state.errors, error] })),
 }))
