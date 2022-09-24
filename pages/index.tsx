@@ -45,7 +45,7 @@ export default function CapitalsGame() {
     }
 
     return (
-        <div className="w-full p-8">
+        <div className="w-full px-8">
             <Heading name={country.name} emoji={country.emoji} />
             <HintDetails />
             <GuessGridContainer />
