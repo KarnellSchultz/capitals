@@ -1,11 +1,11 @@
-import { GuessGridContainer } from '../Components/GuessGridContainer'
+
 import { Nav } from '../Components/Nav'
 import { useCapitalGameStore } from '../stores/capitalGameStore'
 import { HintDetails } from '../Components/HintDetails'
-
 import { CountrySelect } from '../Components/Select'
 import { Heading } from '../Components/Heading'
 import { ButtonsContainer } from '../Components/ButtonsContainer'
+import { GuessGridContainer } from '../Components/GuessGridContainer'
 
 const MAX_GUESSES = 6
 
