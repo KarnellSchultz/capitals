@@ -1,16 +1,11 @@
 import { GuessGridContainer } from '../Components/GuessGridContainer'
 import { Nav } from '../Components/Nav'
-import {
-    GameStateSliceType,
-    useCapitalGameStore,
-} from '../stores/capitalGameStore'
+import { useCapitalGameStore } from '../stores/capitalGameStore'
 import { HintDetails } from '../Components/HintDetails'
 
 import { CountrySelect } from '../Components/Select'
 import { Heading } from '../Components/Heading'
 import { ButtonsContainer } from '../Components/ButtonsContainer'
-import { useLocalStorage } from '../Hooks/useLocalStorage'
-import { useEffect } from 'react'
 
 const MAX_GUESSES = 6
 
