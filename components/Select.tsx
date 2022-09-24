@@ -10,7 +10,7 @@ export const CountrySelect = () => {
 
     const options = useMemo(
         () =>
-            Object.keys(countries)
+            [...new Set(Object.keys(countries))]
                 .map(c => {
                     return {
                         value: countries[c as keyof typeof countries].capital,
