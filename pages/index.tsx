@@ -1,11 +1,11 @@
 
-import { Nav } from '../Components/Nav'
+import { Nav } from '../components/Nav'
 import { useCapitalGameStore } from '../stores/capitalGameStore'
-import { HintDetails } from '../Components/HintDetails'
-import { CountrySelect } from '../Components/Select'
-import { Heading } from '../Components/Heading'
-import { ButtonsContainer } from '../Components/ButtonsContainer'
-import { GuessGridContainer } from '../Components/GuessGridContainer'
+import { HintDetails } from '../components/HintDetails'
+import { CountrySelect } from '../components/Select'
+import { Heading } from '../components/Heading'
+import { ButtonsContainer } from '../components/ButtonsContainer'
+import { GuessGridContainer } from '../components/GuessGridContainer'
 
 const MAX_GUESSES = 6
 
