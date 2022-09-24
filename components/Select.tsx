@@ -26,7 +26,7 @@ export const CountrySelect = () => {
     }
 
     return (
-        <div className="w-ful">
+        <div className="w-ful mb-1">
             <ReactSelect
                 onChange={e => onChange(e?.value ?? '')}
                 options={options}
