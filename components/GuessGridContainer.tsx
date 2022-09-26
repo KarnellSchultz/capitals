@@ -1,5 +1,5 @@
-import { useCapitalGameStore } from '../stores/capitalGameStore'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import type { Guess } from '../utils/localStorageHelpers/guesses'
 
 export type GuessGridItemProps = {
     guess: string
@@ -16,7 +16,7 @@ const GuessGridItem = ({ guess, hintCount, isCorrect }: GuessGridItemProps) => {
                 {hintCount}
             </div>
             <div className="flex items-center justify-center border-2 h-9 col-span-1 rounded">
-                <div>{isCorrect ? '🟩' : '🟥 '}</div>
+                <div>{isCorrect ? '🎉' : '🟥 '}</div>
             </div>
         </>
     )
@@ -26,14 +26,15 @@ const EmptyGridItem = () => (
     <div className="h-9 col-span-7 bg-slate-200 border-2 rounded"></div>
 )
 
-export const GuessGridContainer = () => {
-    const gameStateSlices = useCapitalGameStore(
-        ({ gameStateSlices }) => gameStateSlices
-    )
-    const gridItemsArray = new Array(6 - gameStateSlices.length).fill(null)
-
-    const guessData = [...gameStateSlices, ...gridItemsArray]
+export const GuessGridContainer = ({
+    gameSliceData,
+}: {
+    gameSliceData: Guess[]
+}) => {
     const [parentOne] = useAutoAnimate()
+
+    const gridItemsArray = new Array(6 - gameSliceData.length).fill(null)
+    const guessData = [...gameSliceData, ...gridItemsArray]
 
     return (
         <div

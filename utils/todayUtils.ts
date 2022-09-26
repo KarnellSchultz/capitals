@@ -1,6 +1,6 @@
 import { countries } from 'countries-list'
 
-function daysIntoYear(date: Date) {
+export function daysIntoYear(date: any) {
     return (
         (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
             Date.UTC(date.getFullYear(), 0, 0)) /
@@ -10,6 +10,9 @@ function daysIntoYear(date: Date) {
         1000
     )
 }
+
+export const dayOfYear = daysIntoYear(new Date())
+export const dayOfYearString = daysIntoYear(new Date()).toString()
 
 const forcedCountries2022: Record<number, keyof typeof countries> = {
     267: 'CR',
@@ -114,5 +117,5 @@ const forcedCountries2022: Record<number, keyof typeof countries> = {
 } as const
 
 export function getTodaysCountry() {
-    return countries[forcedCountries2022[daysIntoYear(new Date())]]
+    return countries[forcedCountries2022[dayOfYear]]
 }
