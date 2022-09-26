@@ -52,13 +52,6 @@ export default function CapitalsGame() {
         setGameStateSlices(storedGuesses[dayOfYear])
     }, [setGameStateSlices])
 
-    // maybe move this out if a effect
-    // useEffect(() => {
-    //     if (isCorrect) {
-    //         toast(`🎉  Magellan would be proud  🎉`)
-    //     }
-    // }, [isCorrect])
-
     const guessCount = new Set([...gameStateSlices]).size
     const hasGuessesRemaining = MAX_GUESSES > guessCount
     const isLoser = !isCorrect && guessCount === MAX_GUESSES
@@ -67,8 +60,6 @@ export default function CapitalsGame() {
         !hasGuessesRemaining || !hasHintsRemaining || isCorrect || isLoser
 
     const isCorrectCheck = (capital: string, value: string) => {
-        toast(`🎉  Magellan would be proud  🎉`)
-
         return (
             value.toLocaleLowerCase().trim() ===
             capital.toLocaleLowerCase().trim()
@@ -90,12 +81,16 @@ export default function CapitalsGame() {
         }
 
         const validatedAnswer = isCorrectCheck(country.capital, selectValue)
+
+        if (validatedAnswer) {
+            toast(`🎉  Magellan would be proud  🎉`)
+        }
         setIsCorrect(validatedAnswer)
 
         const newSlice = [
             ...storedGuesses[dayOfYear],
             {
-                hintCount: 0,
+                hintCount,
                 guess: selectValue,
                 guesses: [...guessArray, selectValue],
                 isCorrect: validatedAnswer,
@@ -123,8 +118,10 @@ export default function CapitalsGame() {
                 gameOver={gameOver}
                 handleGuessClick={handleGuessClick}
                 hasHintsRemaining={hasHintsRemaining}
-                handleHintCountClick={handleHintCountClick}
+                gameStateSlices={gameStateSlices}
+                handleHintCountClick={() => handleHintCountClick()}
             />
+
             <ToastContainer
                 style={{ textAlign: 'center' }}
                 position="top-center"
@@ -136,6 +133,7 @@ export default function CapitalsGame() {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
+                icon
             />
         </div>
     )
