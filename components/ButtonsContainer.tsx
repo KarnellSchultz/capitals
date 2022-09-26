@@ -1,6 +1,8 @@
+import { saveHintCount } from '../hooks/hintCount'
+
 type Props = {
     handleGuessClick: () => void
-    incrementHintCount: () => void
+    handleHintCountClick: () => void
     gameOver: boolean
     hasHintsRemaining: boolean
 }
@@ -8,7 +10,7 @@ type Props = {
 export const ButtonsContainer = ({
     handleGuessClick,
     gameOver,
-    incrementHintCount,
+    handleHintCountClick,
     hasHintsRemaining,
 }: Props) => {
     return (
@@ -25,7 +27,7 @@ export const ButtonsContainer = ({
                 className="w-full rounded py-1 px-6 my-2 border-2 
         hover:bg-slate-50
         disabled:bg-slate-300 disabled:cursor-not-allowed"
-                onClick={incrementHintCount}
+                onClick={handleHintCountClick}
                 disabled={gameOver || hasHintsRemaining}>
                 Hint
             </button>

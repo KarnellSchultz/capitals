@@ -1,60 +1,76 @@
-
-import { Nav } from '../components/Nav'
 import { useCapitalGameStore } from '../stores/capitalGameStore'
 import { HintDetails } from '../components/HintDetails'
 import { CountrySelect } from '../components/Select'
 import { Heading } from '../components/Heading'
 import { ButtonsContainer } from '../components/ButtonsContainer'
 import { GuessGridContainer } from '../components/GuessGridContainer'
+import { useGameSlices } from '../hooks/useGameSlices'
+import { useEffect } from 'react'
+import { dayOfYear } from '../todays-utils/useTodays'
+import { loadHintCount, saveHintCount } from '../hooks/hintCount'
+import { loadGuesses, saveGuesses } from '../hooks/guesses'
 
 const MAX_GUESSES = 6
 
 export default function CapitalsGame() {
     const country = useCapitalGameStore(({ country }) => country)
-    const hintCount = useCapitalGameStore(({ hintCount }) => hintCount)
-    const incrementHintCount = useCapitalGameStore(
-        ({ incrementHintCount }) => incrementHintCount
-    )
-    const setGameStateSlices = useCapitalGameStore(
-        ({ setGameStateSlices }) => setGameStateSlices
-    )
-
-    const guesses = useCapitalGameStore(({ guesses }) => guesses)
-    const setGuesses = useCapitalGameStore(({ setGuesses }) => setGuesses)
+    const [setHintCount] = useCapitalGameStore(({ setHintCount }) => [
+        setHintCount,
+    ])
     const selectValue = useCapitalGameStore(({ selectValue }) => selectValue)
-    // const gameStatus = useCapitalGameStore(({ gameStatus }) => gameStatus)
-    const gameStateSlices = useCapitalGameStore(
-        ({ gameStateSlices }) => gameStateSlices
-    )
+    const gameStatus = useCapitalGameStore(({ gameStatus }) => gameStatus)
 
-    const guessCount = guesses.length
+    const { gameSliceData, updateGameSlices } = useGameSlices()
+
+    // saveHintCount(2)
+    const { count } = loadHintCount()
+
+    // saveGuesses({ guess: 'hello' })
+    const data = loadGuesses()
+
+    const guessCount = 0
     const hasGuessesRemaining = MAX_GUESSES > guessCount
-    const isCorrect = guesses.includes(country.capital.toLocaleLowerCase())
+    const isCorrect = selectValue.includes(country.capital.toLocaleLowerCase())
     const isLoser = !isCorrect && guessCount === MAX_GUESSES
     const gameOver = !hasGuessesRemaining || isCorrect || isLoser
 
-    const hasHintsRemaining = country.capital.length <= hintCount
+    const hasHintsRemaining = country.capital.length <= count
 
     const handleGuessClick = () => {
         // add more validation
         if (!selectValue) return
-        if (guesses.includes(selectValue.toLocaleLowerCase())) return
+        if (selectValue.includes(selectValue.toLocaleLowerCase())) return
 
-        setGuesses(selectValue)
-        setGameStateSlices()
+        const { guesses } = loadGuesses()
+        saveGuesses({
+            hintCount: 0,
+            guess: selectValue,
+            guesses: [
+                ...(gameSliceData[gameSliceData.length - 1]?.guesses ?? []),
+                selectValue,
+            ],
+            isCorrect:
+                selectValue.toLocaleLowerCase().trim() ===
+                country.capital.toLocaleLowerCase().trim(),
+        })
+    }
+
+    const handleHintCountClick = () => {
+        const { count } = loadHintCount()
+        saveHintCount(count + 1)
     }
 
     return (
         <div className="w-full px-8">
             <Heading name={country.name} emoji={country.emoji} />
             <HintDetails />
-            <GuessGridContainer />
+            {/* <GuessGridContainer gameSliceData={gameSliceData} /> */}
             <CountrySelect />
             <ButtonsContainer
                 gameOver={gameOver}
                 handleGuessClick={handleGuessClick}
                 hasHintsRemaining={hasHintsRemaining}
-                incrementHintCount={incrementHintCount}
+                handleHintCountClick={handleHintCountClick}
             />
         </div>
     )

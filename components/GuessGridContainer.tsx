@@ -1,5 +1,9 @@
 import { useCapitalGameStore } from '../stores/capitalGameStore'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { useLocalStorageGuesses } from '../hooks/useLocalStorage'
+import { daysIntoYear } from '../todays-utils/useTodays'
+import { StoredGameSliceType, useGameSlices } from '../hooks/useGameSlices'
+import { useEffect, useState } from 'react'
 
 export type GuessGridItemProps = {
     guess: string
@@ -26,14 +30,21 @@ const EmptyGridItem = () => (
     <div className="h-9 col-span-7 bg-slate-200 border-2 rounded"></div>
 )
 
-export const GuessGridContainer = () => {
-    const gameStateSlices = useCapitalGameStore(
-        ({ gameStateSlices }) => gameStateSlices
-    )
-    const gridItemsArray = new Array(6 - gameStateSlices.length).fill(null)
-
-    const guessData = [...gameStateSlices, ...gridItemsArray]
+export const GuessGridContainer = ({
+    gameSliceData,
+}: {
+    gameSliceData: StoredGameSliceType[]
+}) => {
     const [parentOne] = useAutoAnimate()
+
+    // SSR workaround
+    const [data, setData] = useState<StoredGameSliceType[]>([])
+    useEffect(() => {
+        setData(gameSliceData)
+    }, [gameSliceData])
+
+    const gridItemsArray = new Array(6 - data.length).fill(null)
+    const guessData = [...data, ...gridItemsArray]
 
     return (
         <div
