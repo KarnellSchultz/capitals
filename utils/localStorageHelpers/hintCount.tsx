@@ -1,4 +1,4 @@
-import { dayOfYear } from '../todays-utils/useTodays'
+import { dayOfYear } from '../todayUtils'
 
 type HintCountWithKey = {
     [key: number]: {

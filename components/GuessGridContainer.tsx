@@ -1,5 +1,5 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import type { Guess } from '../hooks/guesses'
+import type { Guess } from '../utils/localStorageHelpers/guesses'
 
 export type GuessGridItemProps = {
     guess: string
