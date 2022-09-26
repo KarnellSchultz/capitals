@@ -26,7 +26,7 @@ export const ButtonsContainer = ({
         hover:bg-slate-50
         disabled:bg-slate-300 disabled:cursor-not-allowed"
                 onClick={handleHintCountClick}
-                disabled={gameOver || hasHintsRemaining}>
+                disabled={gameOver || !hasHintsRemaining}>
                 Hint
             </button>
         </div>

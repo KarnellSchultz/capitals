@@ -8,7 +8,9 @@ import { useEffect } from 'react'
 import { dayOfYear } from '../todays-utils/useTodays'
 import { loadHintCount, saveHintCount } from '../hooks/hintCount'
 import { loadGuesses, saveGuesses } from '../hooks/guesses'
-import { Country } from 'countries-list'
+
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const MAX_GUESSES = 6
 
@@ -40,33 +42,38 @@ export default function CapitalsGame() {
         })
     )
 
-    // saveHintCount(2)
-    const { count } = loadHintCount()
-
-    // saveGuesses({ guess: 'hello' })
-    const data = loadGuesses()
-    const slices = [data[dayOfYear]]
-
+    // Load game state from localStorage
     useEffect(() => {
-        //load hint count into game state
         const { count } = loadHintCount()
         setHintCount(count)
     }, [setHintCount])
     useEffect(() => {
-        //load slices count into game state
         const storedGuesses = loadGuesses()
         setGameStateSlices(storedGuesses[dayOfYear])
     }, [setGameStateSlices])
 
+    // maybe move this out if a effect
+    // useEffect(() => {
+    //     if (isCorrect) {
+    //         toast(`🎉  Magellan would be proud  🎉`)
+    //     }
+    // }, [isCorrect])
+
     const guessCount = new Set([...gameStateSlices]).size
     const hasGuessesRemaining = MAX_GUESSES > guessCount
     const isLoser = !isCorrect && guessCount === MAX_GUESSES
-    const gameOver = !hasGuessesRemaining || isCorrect || isLoser
+    const hasHintsRemaining = country.capital.length >= hintCount
+    const gameOver =
+        !hasGuessesRemaining || !hasHintsRemaining || isCorrect || isLoser
 
-    const hasHintsRemaining = country.capital.length <= count
+    const isCorrectCheck = (capital: string, value: string) => {
+        toast(`🎉  Magellan would be proud  🎉`)
 
-    const isCorrectCheck = (capital: string, value: string) =>
-        value.toLocaleLowerCase().trim() === capital.toLocaleLowerCase().trim()
+        return (
+            value.toLocaleLowerCase().trim() ===
+            capital.toLocaleLowerCase().trim()
+        )
+    }
 
     const handleGuessClick = () => {
         const storedGuesses = loadGuesses()
@@ -109,7 +116,7 @@ export default function CapitalsGame() {
     return (
         <div className="w-full px-8">
             <Heading name={country.name} emoji={country.emoji} />
-            <HintDetails />
+            <HintDetails capital={country.capital} hintCount={hintCount} />
             <GuessGridContainer gameSliceData={gameStateSlices} />
             <CountrySelect />
             <ButtonsContainer
@@ -117,6 +124,18 @@ export default function CapitalsGame() {
                 handleGuessClick={handleGuessClick}
                 hasHintsRemaining={hasHintsRemaining}
                 handleHintCountClick={handleHintCountClick}
+            />
+            <ToastContainer
+                style={{ textAlign: 'center' }}
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
             />
         </div>
     )
