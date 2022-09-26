@@ -19,7 +19,12 @@ export function loadGuesses(): Record<string, Guess[]> {
         return defaultGuesses
     }
     const storedGuesses = localStorage.getItem(GAME_SLICE_KEY)
-    return storedGuesses != null ? JSON.parse(storedGuesses) : defaultGuesses
+    if (storedGuesses != null) {
+        return JSON.parse(storedGuesses)
+    } else {
+        localStorage.setItem(GAME_SLICE_KEY, JSON.stringify(defaultGuesses))
+        return defaultGuesses
+    }
 }
 
 export function saveGuesses(newGuess: Guess[]) {

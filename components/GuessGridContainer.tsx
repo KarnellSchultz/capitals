@@ -1,9 +1,4 @@
-import { useCapitalGameStore } from '../stores/capitalGameStore'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { useLocalStorageGuesses } from '../hooks/useLocalStorage'
-import { daysIntoYear } from '../todays-utils/useTodays'
-import { StoredGameSliceType, useGameSlices } from '../hooks/useGameSlices'
-import { useEffect, useState } from 'react'
 import { Guess } from '../hooks/guesses'
 
 export type GuessGridItemProps = {

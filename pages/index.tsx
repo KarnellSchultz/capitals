@@ -4,11 +4,11 @@ import { CountrySelect } from '../components/Select'
 import { Heading } from '../components/Heading'
 import { ButtonsContainer } from '../components/ButtonsContainer'
 import { GuessGridContainer } from '../components/GuessGridContainer'
-import { useGameSlices } from '../hooks/useGameSlices'
 import { useEffect } from 'react'
 import { dayOfYear } from '../todays-utils/useTodays'
 import { loadHintCount, saveHintCount } from '../hooks/hintCount'
 import { loadGuesses, saveGuesses } from '../hooks/guesses'
+import { Country } from 'countries-list'
 
 const MAX_GUESSES = 6
 
@@ -18,14 +18,27 @@ export default function CapitalsGame() {
         ({ hintCount, setHintCount }) => [hintCount, setHintCount]
     )
     // const gameStatus = useCapitalGameStore(({ gameStatus }) => gameStatus)
-    const { selectValue, gameStateSlices, setGameStateSlices } =
-        useCapitalGameStore(
-            ({ selectValue, gameStateSlices, setGameStateSlices }) => ({
-                selectValue,
-                gameStateSlices,
-                setGameStateSlices,
-            })
-        )
+    const {
+        selectValue,
+        gameStateSlices,
+        setGameStateSlices,
+        isCorrect,
+        setIsCorrect,
+    } = useCapitalGameStore(
+        ({
+            selectValue,
+            gameStateSlices,
+            setGameStateSlices,
+            isCorrect,
+            setIsCorrect,
+        }) => ({
+            selectValue,
+            gameStateSlices,
+            setGameStateSlices,
+            isCorrect,
+            setIsCorrect,
+        })
+    )
 
     // saveHintCount(2)
     const { count } = loadHintCount()
@@ -47,11 +60,13 @@ export default function CapitalsGame() {
 
     const guessCount = new Set([...gameStateSlices]).size
     const hasGuessesRemaining = MAX_GUESSES > guessCount
-    const isCorrect = selectValue.includes(country.capital.toLocaleLowerCase())
     const isLoser = !isCorrect && guessCount === MAX_GUESSES
     const gameOver = !hasGuessesRemaining || isCorrect || isLoser
 
     const hasHintsRemaining = country.capital.length <= count
+
+    const isCorrectCheck = (capital: string, value: string) =>
+        value.toLocaleLowerCase().trim() === capital.toLocaleLowerCase().trim()
 
     const handleGuessClick = () => {
         const storedGuesses = loadGuesses()
@@ -67,15 +82,16 @@ export default function CapitalsGame() {
             return
         }
 
+        const validatedAnswer = isCorrectCheck(country.capital, selectValue)
+        setIsCorrect(validatedAnswer)
+
         const newSlice = [
             ...storedGuesses[dayOfYear],
             {
                 hintCount: 0,
                 guess: selectValue,
                 guesses: [...guessArray, selectValue],
-                isCorrect:
-                    selectValue.toLocaleLowerCase().trim() ===
-                    country.capital.toLocaleLowerCase().trim(),
+                isCorrect: validatedAnswer,
             },
         ]
 

@@ -1,5 +1,3 @@
-import { saveHintCount } from '../hooks/hintCount'
-
 type Props = {
     handleGuessClick: () => void
     handleHintCountClick: () => void
