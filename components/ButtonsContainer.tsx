@@ -1,6 +1,6 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { Guess } from '../hooks/guesses'
 import { useCopyToClipboard } from '../hooks/useCopyToClipboard'
+import type { Guess } from '../hooks/guesses'
 
 type Props = {
     handleGuessClick: () => void

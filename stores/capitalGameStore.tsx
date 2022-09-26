@@ -1,6 +1,6 @@
 import { Country } from 'countries-list'
 import create from 'zustand'
-import { Guess } from '../hooks/guesses'
+import type { Guess } from '../hooks/guesses'
 import { getTodaysCountry } from '../todays-utils/useTodays'
 
 export enum GameStatus {
