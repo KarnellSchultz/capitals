@@ -1,5 +1,6 @@
 import { Country } from 'countries-list'
 import create from 'zustand'
+import { defaultGuesses, Guess } from '../hooks/guesses'
 import { getTodaysCountry } from '../todays-utils/useTodays'
 
 export enum GameStatus {
@@ -21,6 +22,8 @@ export type CapitalGameStore = {
     incrementHintCount: () => void
     selectValue: string
     setSelectValue: (value: string) => void
+    setGameStateSlices: (guesses: Guess[]) => void
+    gameStateSlices: Guess[]
 }
 
 export const useCapitalGameStore = create<CapitalGameStore>(set => ({
@@ -38,4 +41,7 @@ export const useCapitalGameStore = create<CapitalGameStore>(set => ({
         })),
     selectValue: '',
     setSelectValue: value => set(state => ({ ...state, selectValue: value })),
+    setGameStateSlices: guesses =>
+        set(state => ({ ...state, gameStateSlices: guesses })),
+    gameStateSlices: [],
 }))

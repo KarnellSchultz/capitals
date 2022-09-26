@@ -14,21 +14,38 @@ const MAX_GUESSES = 6
 
 export default function CapitalsGame() {
     const country = useCapitalGameStore(({ country }) => country)
-    const [setHintCount] = useCapitalGameStore(({ setHintCount }) => [
-        setHintCount,
-    ])
-    const selectValue = useCapitalGameStore(({ selectValue }) => selectValue)
-    const gameStatus = useCapitalGameStore(({ gameStatus }) => gameStatus)
-
-    const { gameSliceData, updateGameSlices } = useGameSlices()
+    const [hintCount, setHintCount] = useCapitalGameStore(
+        ({ hintCount, setHintCount }) => [hintCount, setHintCount]
+    )
+    // const gameStatus = useCapitalGameStore(({ gameStatus }) => gameStatus)
+    const { selectValue, gameStateSlices, setGameStateSlices } =
+        useCapitalGameStore(
+            ({ selectValue, gameStateSlices, setGameStateSlices }) => ({
+                selectValue,
+                gameStateSlices,
+                setGameStateSlices,
+            })
+        )
 
     // saveHintCount(2)
     const { count } = loadHintCount()
 
     // saveGuesses({ guess: 'hello' })
     const data = loadGuesses()
+    const slices = [data[dayOfYear]]
 
-    const guessCount = 0
+    useEffect(() => {
+        //load hint count into game state
+        const { count } = loadHintCount()
+        setHintCount(count)
+    }, [setHintCount])
+    useEffect(() => {
+        //load slices count into game state
+        const storedGuesses = loadGuesses()
+        setGameStateSlices(storedGuesses[dayOfYear])
+    }, [setGameStateSlices])
+
+    const guessCount = new Set([...gameStateSlices]).size
     const hasGuessesRemaining = MAX_GUESSES > guessCount
     const isCorrect = selectValue.includes(country.capital.toLocaleLowerCase())
     const isLoser = !isCorrect && guessCount === MAX_GUESSES
@@ -37,34 +54,47 @@ export default function CapitalsGame() {
     const hasHintsRemaining = country.capital.length <= count
 
     const handleGuessClick = () => {
+        const storedGuesses = loadGuesses()
+        const guessArray = storedGuesses[dayOfYear].map(({ guess }) =>
+            guess.toLocaleLowerCase()
+        )
         // add more validation
         if (!selectValue) return
-        if (selectValue.includes(selectValue.toLocaleLowerCase())) return
+        if (
+            guessCount > 0 &&
+            guessArray.includes(selectValue.toLocaleLowerCase())
+        ) {
+            return
+        }
 
-        const { guesses } = loadGuesses()
-        saveGuesses({
-            hintCount: 0,
-            guess: selectValue,
-            guesses: [
-                ...(gameSliceData[gameSliceData.length - 1]?.guesses ?? []),
-                selectValue,
-            ],
-            isCorrect:
-                selectValue.toLocaleLowerCase().trim() ===
-                country.capital.toLocaleLowerCase().trim(),
-        })
+        const newSlice = [
+            ...storedGuesses[dayOfYear],
+            {
+                hintCount: 0,
+                guess: selectValue,
+                guesses: [...guessArray, selectValue],
+                isCorrect:
+                    selectValue.toLocaleLowerCase().trim() ===
+                    country.capital.toLocaleLowerCase().trim(),
+            },
+        ]
+
+        setGameStateSlices(newSlice)
+        saveGuesses(newSlice)
     }
 
     const handleHintCountClick = () => {
         const { count } = loadHintCount()
-        saveHintCount(count + 1)
+        const newCount = count + 1
+        setHintCount(newCount)
+        saveHintCount(newCount)
     }
 
     return (
         <div className="w-full px-8">
             <Heading name={country.name} emoji={country.emoji} />
             <HintDetails />
-            {/* <GuessGridContainer gameSliceData={gameSliceData} /> */}
+            <GuessGridContainer gameSliceData={gameStateSlices} />
             <CountrySelect />
             <ButtonsContainer
                 gameOver={gameOver}

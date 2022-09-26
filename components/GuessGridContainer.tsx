@@ -4,6 +4,7 @@ import { useLocalStorageGuesses } from '../hooks/useLocalStorage'
 import { daysIntoYear } from '../todays-utils/useTodays'
 import { StoredGameSliceType, useGameSlices } from '../hooks/useGameSlices'
 import { useEffect, useState } from 'react'
+import { Guess } from '../hooks/guesses'
 
 export type GuessGridItemProps = {
     guess: string
@@ -33,18 +34,12 @@ const EmptyGridItem = () => (
 export const GuessGridContainer = ({
     gameSliceData,
 }: {
-    gameSliceData: StoredGameSliceType[]
+    gameSliceData: Guess[]
 }) => {
     const [parentOne] = useAutoAnimate()
 
-    // SSR workaround
-    const [data, setData] = useState<StoredGameSliceType[]>([])
-    useEffect(() => {
-        setData(gameSliceData)
-    }, [gameSliceData])
-
-    const gridItemsArray = new Array(6 - data.length).fill(null)
-    const guessData = [...data, ...gridItemsArray]
+    const gridItemsArray = new Array(6 - gameSliceData.length).fill(null)
+    const guessData = [...gameSliceData, ...gridItemsArray]
 
     return (
         <div

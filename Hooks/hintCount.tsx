@@ -1,26 +1,38 @@
 import { dayOfYear } from '../todays-utils/useTodays'
 
+type HintCountWithKey = {
+    [key: number]: {
+        count: number
+    }
+}
+
 type HintCount = {
-    day: number
     count: number
 }
+
 const HINT_COUNT_KEY = 'hint-count-key'
+const defaultCount = {
+    [dayOfYear]: { count: 0 },
+}
 
 export function loadHintCount(): HintCount {
-    if (typeof window === 'undefined') return {count:0, day:0}
+    if (typeof window === 'undefined') return defaultCount[dayOfYear]
     const storedHintCount = localStorage.getItem(HINT_COUNT_KEY)
-    return storedHintCount != null ? JSON.parse(storedHintCount) : {}
+    const returnValue =
+        storedHintCount != null ? JSON.parse(storedHintCount) : defaultCount
+    return returnValue[dayOfYear]
 }
 
 export function saveHintCount(count: number) {
     if (typeof window === 'undefined') return {}
-    const storedCount = loadHintCount()
+    const storedCount: HintCountWithKey = loadHintCount()
 
     localStorage.setItem(
         HINT_COUNT_KEY,
         JSON.stringify({
-            day: dayOfYear,
-            count,
+            [dayOfYear]: {
+                count,
+            },
         })
     )
 }

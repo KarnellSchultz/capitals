@@ -12,6 +12,7 @@ export function daysIntoYear(date: any) {
 }
 
 export const dayOfYear = daysIntoYear(new Date())
+export const dayOfYearString = daysIntoYear(new Date()).toString()
 
 const forcedCountries2022: Record<number, keyof typeof countries> = {
     267: 'CR',

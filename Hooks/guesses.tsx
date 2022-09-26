@@ -2,35 +2,33 @@ import { dayOfYear } from '../todays-utils/useTodays'
 
 const GAME_SLICE_KEY = 'guesses'
 
-export type StoredGameSliceType = {
-    [key: number]: {
-        guess: string
-        guesses: string[]
-        hintCount: number
-        isCorrect: boolean
-        day?: number
+export type Guess = {
+    guess: string
+    guesses: string[]
+    hintCount: number
+    isCorrect: boolean
+    day?: number
+}
+
+export const defaultGuesses = {
+    [dayOfYear]: [],
+}
+
+export function loadGuesses(): Record<string, Guess[]> {
+    if (typeof window === 'undefined') {
+        return defaultGuesses
     }
-}
-
-export function loadGuesses() {
-    if (typeof window === 'undefined') return {}
     const storedGuesses = localStorage.getItem(GAME_SLICE_KEY)
-    return storedGuesses != null ? JSON.parse(storedGuesses) : {}
+    return storedGuesses != null ? JSON.parse(storedGuesses) : defaultGuesses
 }
 
-export function saveGuesses(newGuess: StoredGameSliceType) {
+export function saveGuesses(newGuess: Guess[]) {
     if (typeof window === 'undefined') return {}
-
     const storedGuesses = loadGuesses()
-    console.log(storedGuesses)
-
-    // console.log({ storedGuesses, newGuess })
-
-
     localStorage.setItem(
         GAME_SLICE_KEY,
         JSON.stringify({
-            [dayOfYear]: [storedGuesses, newGuess],
+            [dayOfYear.toString()]: newGuess,
         })
     )
 }
