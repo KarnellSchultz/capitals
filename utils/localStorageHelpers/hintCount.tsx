@@ -15,11 +15,12 @@ const defaultCount = {
 }
 
 const HINT_COUNT_KEY = 'hint-count-key'
+
 export function loadHintCount(): HintCount {
     if (typeof window === 'undefined') return defaultCount[dayOfYear]
     const storedHintCount = localStorage.getItem(HINT_COUNT_KEY)
 
-    if (storedHintCount != null) {
+    if (storedHintCount != null && JSON.parse(storedHintCount)[dayOfYear]) {
         return JSON.parse(storedHintCount)[dayOfYear]
     } else {
         localStorage.setItem(HINT_COUNT_KEY, JSON.stringify(defaultCount))

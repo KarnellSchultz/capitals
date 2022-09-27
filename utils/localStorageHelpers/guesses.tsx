@@ -19,7 +19,9 @@ export function loadGuesses(): Record<string, Guess[]> {
         return defaultGuesses
     }
     const storedGuesses = localStorage.getItem(GAME_SLICE_KEY)
-    if (storedGuesses != null) {
+
+    // clean this code up
+    if (storedGuesses != null && JSON.parse(storedGuesses)[dayOfYear]) {
         return JSON.parse(storedGuesses)
     } else {
         localStorage.setItem(GAME_SLICE_KEY, JSON.stringify(defaultGuesses))
