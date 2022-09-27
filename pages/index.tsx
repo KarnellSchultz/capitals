@@ -41,6 +41,7 @@ export default function CapitalsGame() {
             setIsCorrect,
         })
     )
+    console.log(process.env.NEXT_PUBLIC_VERCEL_URL)
 
     // Load game state from localStorage
     useEffect(() => {
