@@ -34,7 +34,7 @@ export const ButtonsContainer = ({
             returnValue += str
         }
 
-        const url = `🌐  https://capitals-phi.vercel.app/ 🌐 \n`
+        const url = '🌐https://capitals-magellen.vercel.app/🌐' + `\n`
 
         return url + returnValue
     }
