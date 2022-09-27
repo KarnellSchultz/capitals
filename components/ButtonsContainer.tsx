@@ -34,9 +34,9 @@ export const ButtonsContainer = ({
             returnValue += str
         }
 
-        const url = '🌐 https://capitals-magellen.vercel.app/ 🌐' + `\n`
+        const url = `\n` + '🌐 https://capitals-magellan.vercel.app/ 🌐'
 
-        return url + returnValue
+        return returnValue + url
     }
 
     const handleShareClick = () => {
