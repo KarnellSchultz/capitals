@@ -11,13 +11,13 @@ export const CountrySelect = () => {
     const options = useMemo(
         () =>
             [...new Set(Object.keys(countries))]
-                .map(c => {
-                    return {
-                        value: countries[c as keyof typeof countries].capital,
-                        label: countries[c as keyof typeof countries].capital,
-                    }
-                })
-                .filter(el => el.value !== ''),
+                .map(c => countries[c as keyof typeof countries].capital)
+                .filter(el => el !== '')
+                .sort()
+                .map(capital => ({
+                    value: capital,
+                    label: capital,
+                })),
         []
     )
 
