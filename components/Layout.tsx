@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { Nav } from './Nav'
 
 type LayoutProps = {
@@ -6,13 +7,34 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
     return (
-        <div className="grid sm:gap-4 sm:grid-cols-8">
-            <div
-                className="sm:col-start-2 sm:col-span-6 md:col-start-3 md:col-span-4 ">
-                <Nav />
-                {children}
+        <>
+            <Head>
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/apple-touch-icon.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="32x32"
+                    href="/favicon-32x32.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="16x16"
+                    href="/favicon-16x16.png"
+                />
+                <link rel="manifest" href="/site.webmanifest"></link>
+            </Head>
+            <div className="grid sm:gap-4 sm:grid-cols-8">
+                <div className="sm:col-start-2 sm:col-span-6 md:col-start-3 md:col-span-4 ">
+                    <Nav />
+                    {children}
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
