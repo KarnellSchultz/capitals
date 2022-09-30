@@ -42,20 +42,23 @@ export const ButtonsContainer = ({
     const handleShareClick = () => {
         copyToClipboard(formatGameStateToShare(gameStateSlices))
     }
+
     return (
         <div ref={parent as any}>
             <button
-                className="w-full rounded py-1 px-6 border-2
-        hover:bg-slate-50
-        disabled:bg-slate-300 disabled:cursor-not-allowed"
+                className="w-full rounded py-1 px-6 my-1 border-2
+                disabled:bg-zinc-300 disabled:cursor-not-allowed
+                hover:bg-zinc-200 hover:border-zinc-300
+                "
                 onClick={handleGuessClick}
                 disabled={gameOver}>
                 Guess
             </button>
             <button
-                className="w-full rounded py-1 px-6 my-2 border-2 
-        hover:bg-slate-50
-        disabled:bg-slate-300 disabled:cursor-not-allowed"
+                className="w-full rounded py-1 px-6 my-1 border-2
+                disabled:bg-zinc-300 disabled:cursor-not-allowed
+                hover:bg-zinc-200 hover:border-zinc-300
+                "
                 onClick={handleHintCountClick}
                 disabled={gameOver || !hasHintsRemaining}>
                 Hint
@@ -64,8 +67,9 @@ export const ButtonsContainer = ({
                 {gameOver ? (
                     <button
                         className="w-full rounded py-1 px-6 border-2
-                    hover:bg-slate-50
-                    disabled:bg-slate-300 disabled:cursor-not-allowed"
+                    disabled:bg-slate-300 disabled:cursor-not-allowed
+                    bg-lime-500 hover:bg-lime-400
+                    "
                         onClick={handleShareClick}>
                         Share
                     </button>

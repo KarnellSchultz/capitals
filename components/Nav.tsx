@@ -3,7 +3,7 @@ import Link from 'next/link'
 export const Nav = () => {
     return (
         <nav
-            className="h-12 w-full px-2 mt-2 border-b-2 font-bold border-b-slate-200
+            className="h-12 w-full px-2 mt-2 border-b-2 font-bold dark:border-b-slate-200
       flex justify-between items-center ">
             <div>
                 <Link href={'/about'}>
@@ -13,7 +13,7 @@ export const Nav = () => {
             <Link href={'/'}>
                 <h1 className="text-4xl uppercase">
                     Capita
-                    <span className="text-indigo-600">l</span>s
+                    <span className="text-lime-700">l</span>s
                 </h1>
             </Link>
             <div>

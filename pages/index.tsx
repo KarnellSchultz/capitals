@@ -6,7 +6,10 @@ import { ButtonsContainer } from '../components/ButtonsContainer'
 import { GuessGridContainer } from '../components/GuessGridContainer'
 import { useEffect } from 'react'
 import { dayOfYear } from '../utils/todayUtils'
-import { loadHintCount, saveHintCount } from '../utils/localStorageHelpers/hintCount'
+import {
+    loadHintCount,
+    saveHintCount,
+} from '../utils/localStorageHelpers/hintCount'
 import { loadGuesses, saveGuesses } from '../utils/localStorageHelpers/guesses'
 
 import { ToastContainer, toast } from 'react-toastify'
@@ -109,8 +112,7 @@ export default function CapitalsGame() {
     }
 
     return (
-        <div className="w-full px-8 
-        ">
+        <div className="">
             <Heading name={country.name} emoji={country.emoji} />
             <HintDetails capital={country.capital} hintCount={hintCount} />
             <GuessGridContainer gameSliceData={gameStateSlices} />

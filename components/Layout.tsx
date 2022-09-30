@@ -27,9 +27,10 @@ const Layout = ({ children }: LayoutProps) => {
                     href="/favicon-16x16.png"
                 />
                 <link rel="manifest" href="/site.webmanifest"></link>
+                <title>Capitals Magellan</title>
             </Head>
             <div className="grid sm:gap-4 sm:grid-cols-8">
-                <div className="sm:col-start-2 sm:col-span-6 md:col-start-3 md:col-span-4 ">
+                <div className="sm:col-start-2 sm:col-span-6 md:col-start-3 md:col-span-4 mx-4">
                     <Nav />
                     {children}
                 </div>
