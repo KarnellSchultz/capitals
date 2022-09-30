@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Footer } from './Footer'
 import { Nav } from './Nav'
 
 type LayoutProps = {
@@ -29,10 +30,13 @@ const Layout = ({ children }: LayoutProps) => {
                 <link rel="manifest" href="/site.webmanifest"></link>
                 <title>Capitals Magellan</title>
             </Head>
-            <div className="grid sm:gap-4 sm:grid-cols-8">
-                <div className="sm:col-start-2 sm:col-span-6 md:col-start-3 md:col-span-4 mx-4">
+            <div className="grid sm:gap-4 sm:grid-cols-8 h-screen">
+                <div
+                    className="sm:col-start-2 sm:col-span-6 md:col-start-3 md:col-span-4 mx-4
+                flex flex-col">
                     <Nav />
-                    {children}
+                    <div className="h-full">{children}</div>
+                    <Footer />
                 </div>
             </div>
         </>

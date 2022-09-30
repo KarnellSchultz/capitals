@@ -112,7 +112,7 @@ export default function CapitalsGame() {
     }
 
     return (
-        <div className="">
+        <div>
             <Heading name={country.name} emoji={country.emoji} />
             <HintDetails capital={country.capital} hintCount={hintCount} />
             <GuessGridContainer gameSliceData={gameStateSlices} />
