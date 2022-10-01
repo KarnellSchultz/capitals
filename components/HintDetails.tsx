@@ -1,11 +1,11 @@
 import CountUp from 'react-countup'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 
-type Props = {
+type HintDetailsProps = {
     capital: string
     hintCount: number
 }
-export const HintDetails = ({ capital, hintCount }: Props) => {
+export const HintDetails = ({ capital, hintCount }: HintDetailsProps) => {
     const [parent] = useAutoAnimate()
 
     const hintedWord = capital.substring(0, hintCount)
@@ -17,8 +17,8 @@ export const HintDetails = ({ capital, hintCount }: Props) => {
             <div
                 ref={parent as any}
                 className="flex items-center justify-center border-2 col-span-5 rounded ">
-                {[...hintedWord].map(letter => (
-                    <div key={letter}> {letter === ' ' ? ' _ ' : letter} </div>
+                {[...hintedWord].map((letter, index) => (
+                    <div key={`${letter}-${index}`}> {letter === ' ' ? ' _ ' : letter} </div>
                 ))}
             </div>
             <div className="flex items-center justify-center border-2 col-span-1 rounded">
