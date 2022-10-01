@@ -4,7 +4,7 @@ import { CapitalsLogo } from './CapitalsLogo'
 export const Footer = () => {
     return (
         <div
-            className="h-12 w-full my-4 font-bold
+            className="h-12 w-full my-1 font-bold
             flex justify-center items-center">
             <div className="flex items-center">
                 <div className="mx-1">❤️</div>
