@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { ToastContainer } from 'react-toastify'
 import { Footer } from './Footer'
 import { Nav } from './Nav'
 
@@ -38,6 +39,19 @@ const Layout = ({ children }: LayoutProps) => {
                     <div className="h-full">{children}</div>
                     <Footer />
                 </div>
+                <ToastContainer
+                    style={{ textAlign: 'center' }}
+                    position="top-center"
+                    autoClose={5000}
+                    newestOnTop={false}
+                    rtl={false}
+                    closeOnClick
+                    hideProgressBar
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    icon
+                />
             </div>
         </>
     )
