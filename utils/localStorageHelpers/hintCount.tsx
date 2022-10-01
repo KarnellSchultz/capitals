@@ -30,8 +30,6 @@ export function loadHintCount(): HintCount {
 
 export function saveHintCount(count: number) {
     if (typeof window === 'undefined') return {}
-    // const storedCount: HintCountWithKey = loadHintCount()
-
     localStorage.setItem(
         HINT_COUNT_KEY,
         JSON.stringify({

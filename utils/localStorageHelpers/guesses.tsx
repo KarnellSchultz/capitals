@@ -15,13 +15,11 @@ export const defaultGuesses = {
 }
 
 export function loadGuesses(): Guess[] {
-    if (typeof window === 'undefined') {
-        return defaultGuesses[dayOfYear]
-    }
+    if (typeof window === 'undefined') return defaultGuesses[dayOfYear]
     const storedGuesses = localStorage.getItem(GAME_SLICE_KEY)
 
     // clean this code up
-    if (storedGuesses != null && JSON.parse(storedGuesses)) {
+    if (storedGuesses != null && JSON.parse(storedGuesses)[dayOfYear]) {
         return JSON.parse(storedGuesses)[dayOfYear]
     } else {
         localStorage.setItem(GAME_SLICE_KEY, JSON.stringify(defaultGuesses))
@@ -31,7 +29,6 @@ export function loadGuesses(): Guess[] {
 
 export function saveGuesses(newGuess: Guess[]) {
     if (typeof window === 'undefined') return {}
-    const storedGuesses = loadGuesses()
     localStorage.setItem(
         GAME_SLICE_KEY,
         JSON.stringify({

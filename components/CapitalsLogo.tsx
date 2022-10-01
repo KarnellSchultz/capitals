@@ -3,10 +3,10 @@ export const CapitalsLogoSize = {
     LARGE: 'LARGE',
 } as const
 
-type Props = {
+type CapitalsLogoProps = {
     size: typeof CapitalsLogoSize[keyof typeof CapitalsLogoSize]
 }
-export const CapitalsLogo = ({ size }: Props) => (
+export const CapitalsLogo = ({ size }: CapitalsLogoProps) => (
     <h1
         className={` ${
             size === CapitalsLogoSize.LARGE ? 'text-4xl' : 'text-1xl'
