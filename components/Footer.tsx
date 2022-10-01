@@ -10,8 +10,8 @@ export const Footer = () => {
                 <div className="mx-1">❤️</div>
                 <CapitalsLogo size="SMALL" />
                 <div className="mx-1">-</div>
-                <Link passHref href="https://ko-fi.com/karnell">
-                    <a className="underline underline-offset-2 ">
+                <Link passHref href="https://ko-fi.com/karnell"  >
+                    <a className="underline underline-offset-2" target="_blank" >
                         Buy me a ☕️
                     </a>
                 </Link>
