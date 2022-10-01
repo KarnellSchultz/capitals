@@ -90,7 +90,7 @@ export default function CapitalsGame() {
     useEffect(() => {
         const storedGuesses = loadGuesses()
         checkGameStatus(storedGuesses)
-    }, [checkGameStatus])
+    }, [checkGameStatus, gameStateSlices])
 
     const guessCount = new Set([...gameStateSlices]).size
     const hasHintsRemaining = new Set([...country.capital]).size >= hintCount
