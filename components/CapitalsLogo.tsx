@@ -10,7 +10,7 @@ export const CapitalsLogo = ({ size }: Props) => (
     <h1
         className={`text-${
             size === CapitalsLogoSize.LARGE ? '4' : '1'
-        }xl uppercase cursor-pointer`}>
+        }xl uppercase`}>
         Capita
         <span className="text-lime-700">l</span>s
     </h1>

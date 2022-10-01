@@ -4,13 +4,15 @@ import { CapitalsLogo } from './CapitalsLogo'
 export const Footer = () => {
     return (
         <div
-            className="h-12 w-full my-4 font-bold dark:border-b-slate-200
+            className="h-12 w-full my-4 font-bold
             flex justify-center items-center">
-            <div className="flex flex-col items-center">
+            <div className="flex items-center">
+                <div className="mx-1">❤️</div>
                 <CapitalsLogo size="SMALL" />
-                <Link href={'https://karnellschultz.com/'}>
-                    <a className="underline underline-offset-2">
-                        Made with ❤️ by Karnell Schultz
+                <div className="mx-1">-</div>
+                <Link passHref href="https://ko-fi.com/karnell">
+                    <a className="underline underline-offset-2 ">
+                        Buy me a ☕️
                     </a>
                 </Link>
             </div>

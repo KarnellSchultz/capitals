@@ -6,7 +6,7 @@ export type GuessGridItemProps = {
     hintCount: number
     isCorrect: boolean
 }
-const GuessGridItem = ({ guess, hintCount, isCorrect }: GuessGridItemProps) => {
+export const GuessGridItem = ({ guess, hintCount, isCorrect }: GuessGridItemProps) => {
     return (
         <>
             <div className="col-span-5 flex justify-center border-2 h-9 items-center rounded uppercase">
