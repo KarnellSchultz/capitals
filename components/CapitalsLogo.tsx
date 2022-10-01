@@ -8,9 +8,9 @@ type Props = {
 }
 export const CapitalsLogo = ({ size }: Props) => (
     <h1
-        className={`text-${
-            size === CapitalsLogoSize.LARGE ? '4' : '1'
-        }xl uppercase`}>
+        className={` ${
+            size === CapitalsLogoSize.LARGE ? 'text-4xl' : 'text-1xl'
+        }  uppercase`}>
         Capita
         <span className="text-lime-700">l</span>s
     </h1>

@@ -16,7 +16,7 @@ export const GuessGridItem = ({ guess, hintCount, isCorrect }: GuessGridItemProp
                 {hintCount}
             </div>
             <div className="flex items-center justify-center border-2 h-9 col-span-1 rounded">
-                <div>{isCorrect ? '🎉' : '🟥 '}</div>
+                <div>{isCorrect ? '🎉' : '🚫'}</div>
             </div>
         </>
     )
