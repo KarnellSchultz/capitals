@@ -14,18 +14,18 @@ export const defaultGuesses = {
     [dayOfYear]: [],
 }
 
-export function loadGuesses(): Record<string, Guess[]> {
+export function loadGuesses(): Guess[] {
     if (typeof window === 'undefined') {
-        return defaultGuesses
+        return defaultGuesses[dayOfYear]
     }
     const storedGuesses = localStorage.getItem(GAME_SLICE_KEY)
 
     // clean this code up
-    if (storedGuesses != null && JSON.parse(storedGuesses)[dayOfYear]) {
-        return JSON.parse(storedGuesses)
+    if (storedGuesses != null && JSON.parse(storedGuesses)) {
+        return JSON.parse(storedGuesses)[dayOfYear]
     } else {
         localStorage.setItem(GAME_SLICE_KEY, JSON.stringify(defaultGuesses))
-        return defaultGuesses
+        return defaultGuesses[dayOfYear]
     }
 }
 
