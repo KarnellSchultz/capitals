@@ -15,7 +15,7 @@ import {
     saveGuesses,
 } from '../utils/localStorageHelpers/guesses'
 
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const MAX_GUESSES = 6
@@ -153,6 +153,19 @@ export default function CapitalsGame() {
                 hasHintsRemaining={hasHintsRemaining}
                 gameStateSlices={gameStateSlices}
                 handleHintCountClick={() => handleHintCountClick()}
+            />
+            <ToastContainer
+                style={{ textAlign: 'center' }}
+                position="top-center"
+                autoClose={5000}
+                newestOnTop={false}
+                rtl={false}
+                closeOnClick
+                hideProgressBar
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                icon
             />
         </>
     )

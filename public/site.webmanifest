@@ -1,6 +1,7 @@
 {
     "name": "capitals-magellan",
-    "short_name": "capitals-magellan",
+    "short_name": "capitals",
+    "description": "A game daily game where you guess the capital of a given country",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -15,5 +16,6 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+    "start_url": "../pages/index.tsx"
 }

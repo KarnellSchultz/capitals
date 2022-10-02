@@ -29,21 +29,13 @@ const Layout = ({ children }: LayoutProps) => {
                     href="/favicon-16x16.png"
                 />
                 <link rel="manifest" href="/site.webmanifest"></link>
+                <meta
+                    name="description"
+                    content="Capital game to guess the worlds capitals"
+                />
                 <title>Capitals Magellan</title>
             </Head>
-            <ToastContainer
-                style={{ textAlign: 'center' }}
-                position="top-center"
-                autoClose={5000}
-                newestOnTop={false}
-                rtl={false}
-                closeOnClick
-                hideProgressBar
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                icon
-            />
+
             <div className="grid sm:gap-4 sm:grid-cols-8 h-screen">
                 <div
                     className="sm:col-start-2 sm:col-span-6 md:col-start-3 md:col-span-4 mx-4
