@@ -2,7 +2,7 @@ import { HintDetails } from '../components/HintDetails'
 import { MyLink } from '../components/MyLink'
 import { Spacer } from '../components/Spacer'
 
-export default function aboutPage() {
+export default function howToPlay() {
     return (
         <div>
             <h2 className="text-2xl text-center my-4">How To Play</h2>
@@ -78,7 +78,7 @@ export default function aboutPage() {
                 <p>
                     My geography loving group chat named
                     <MyLink href="https://en.wikipedia.org/wiki/Ferdinand_Magellan">
-                    &quot;Young Magellan&apos;yars&quot;
+                        &quot;Young Magellan&apos;yars&quot;
                     </MyLink>
                     loved playing
                     <MyLink href="https://worldle.teuteuf.fr/">Worldle</MyLink>

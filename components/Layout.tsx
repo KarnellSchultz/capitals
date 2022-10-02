@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { ToastContainer } from 'react-toastify'
+import { useRouter } from 'next/router'
 import { Footer } from './Footer'
 import { Nav } from './Nav'
 
@@ -8,6 +8,19 @@ type LayoutProps = {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+    const router = useRouter()
+
+    const getTitle = () => {
+        if (router.pathname === '/') return 'Capitals Magellan'
+        return router.pathname
+            .replaceAll('-', ' ')
+            .replaceAll('/', '')
+            .split(' ')
+            .map(
+                word => word.charAt(0).toLocaleUpperCase() + word.slice(1) + ' '
+            )
+    }
+
     return (
         <>
             <Head>
@@ -33,7 +46,7 @@ const Layout = ({ children }: LayoutProps) => {
                     name="description"
                     content="Capital game to guess the worlds capitals"
                 />
-                <title>Capitals Magellan</title>
+                <title>{getTitle()}</title>
             </Head>
 
             <div className="grid sm:gap-4 sm:grid-cols-8 h-screen">
