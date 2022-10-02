@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
             .split(' ')
             .map(
                 word => word.charAt(0).toLocaleUpperCase() + word.slice(1) + ' '
-            )
+            ).join(" ")
     }
 
     return (
