@@ -1,6 +1,8 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { toast } from 'react-toastify'
 import { useCopyToClipboard } from '../Hooks/useCopyToClipboard'
 import type { Guess } from '../utils/localStorageHelpers/guesses'
+import { dayOfYear } from '../utils/todayUtils'
 
 type Props = {
     handleGuessClick: () => void
@@ -34,13 +36,16 @@ export const ButtonsContainer = ({
             returnValue += str
         }
 
-        const url = `\n` + '🌐 https://capitals-magellan.vercel.app/ 🌐'
+        const gameResultStr = `Capitals-Magellan 🌍 \n#${dayOfYear} ${gameState.length}/6 \n`
 
-        return returnValue + url
+        const url = `\n` + 'https://capitals.nellzus.se'
+
+        return gameResultStr + returnValue + url
     }
 
     const handleShareClick = () => {
         copyToClipboard(formatGameStateToShare(gameStateSlices))
+        toast.success('Copied results to clipboard')
     }
 
     return (

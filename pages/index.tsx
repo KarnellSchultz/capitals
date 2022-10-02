@@ -117,7 +117,7 @@ export default function CapitalsGame() {
         }
 
         const validatedAnswer = isCorrectCheck(country.capital, selectValue)
-        if (validatedAnswer) toast(`🎉  Magellan would be proud  🎉`)
+        if (validatedAnswer) toast.success(`🎉  Magellan would be proud  🎉`)
 
         const newSlice = [
             ...storedGuesses,
@@ -157,7 +157,7 @@ export default function CapitalsGame() {
             <ToastContainer
                 style={{ textAlign: 'center' }}
                 position="top-center"
-                autoClose={5000}
+                autoClose={3000}
                 newestOnTop={false}
                 rtl={false}
                 closeOnClick
