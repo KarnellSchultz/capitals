@@ -48,7 +48,6 @@ export default function howToPlay() {
                 </p>
             </div>
             <hr />
-
             <div>
                 <h2 className="text-2xl my-2 text-center">Hints</h2>
                 <ul>
@@ -72,7 +71,6 @@ export default function howToPlay() {
             </div>
             <hr />
             <Spacer />
-
             <div>
                 <h2 className="text-2xl text-center">Inspiration</h2>
                 <p>
@@ -89,6 +87,15 @@ export default function howToPlay() {
             </div>
             <Spacer />
 
+            <Spacer />
+            <hr />
+            <h2 className="text-2xl text-center">Thanks</h2>
+            <div>
+                Thanks to the young Magellan&#39;s group chat. Olle, Pontus, and
+                CP.
+            </div>
+            <Spacer />
+            <hr />
             <div>
                 <hr />
                 <Spacer />
@@ -103,12 +110,11 @@ export default function howToPlay() {
                     </MyLink>
                 </p>
             </div>
-            <Spacer />
-            <hr />
             <div>
                 <Spacer />
                 <h2 className="text-2xl text-center ">Happy guessing!</h2>
             </div>
+            <Spacer />
         </div>
     )
 }
