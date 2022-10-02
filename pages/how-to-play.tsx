@@ -78,7 +78,7 @@ export default function aboutPage() {
                 <p>
                     My geography loving group chat named
                     <MyLink href="https://en.wikipedia.org/wiki/Ferdinand_Magellan">
-                        Young Magellans
+                    &quot;Young Magellan&apos;yars&quot;
                     </MyLink>
                     loved playing
                     <MyLink href="https://worldle.teuteuf.fr/">Worldle</MyLink>
