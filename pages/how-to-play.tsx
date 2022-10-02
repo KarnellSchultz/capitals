@@ -78,7 +78,7 @@ export default function howToPlay() {
                 <p>
                     My geography loving group chat named
                     <MyLink href="https://en.wikipedia.org/wiki/Ferdinand_Magellan">
-                        &quot;Young Magellan&apos;yars&quot;
+                        &quot;Young Magellan&apos;s&quot;
                     </MyLink>
                     loved playing
                     <MyLink href="https://worldle.teuteuf.fr/">Worldle</MyLink>
