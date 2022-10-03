@@ -4,8 +4,9 @@ import type { Guess } from '../utils/localStorageHelpers/guesses'
 import { getTodaysCountry } from '../utils/todayUtils'
 
 export enum GameStatus {
-    GAME_OVER = 'GAME_OVER',
     PLAYING = 'PLAYING',
+    WINNER = 'WINNER',
+    LOSER = 'LOSER',
 }
 
 export type GameStatusType = keyof typeof GameStatus
@@ -33,7 +34,7 @@ export const useCapitalGameStore = create<CapitalGameStore>(set => ({
     incrementHintCount: () =>
         set(state => ({ ...state, hintCount: state.hintCount + 1 })),
     setHintCount: count => set(state => ({ ...state, hintCount: count })),
-    gameStatus: GameStatus.GAME_OVER,
+    gameStatus: GameStatus.PLAYING,
     setGameStatus: (gameStatus: GameStatusType) =>
         set(state => ({
             ...state,

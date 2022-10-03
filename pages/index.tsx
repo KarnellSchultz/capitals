@@ -55,26 +55,33 @@ export default function CapitalsGame() {
     )
 
     const checkGameStatus = useCallback(
-        (guesses: Guess[]) => {
+        (guesses: Guess[], hintCount: number) => {
             const guessCount = new Set([...guesses]).size
             const hasGuessesRemaining = MAX_GUESSES > guessCount
             const hasHintsRemaining =
                 new Set([...country.capital]).size >= hintCount
-            const isLoser =
-                !guesses.some(guess => guess.isCorrect === true) &&
-                !hasGuessesRemaining
+
+            //WInner
             const isWinner = guesses.some(guess => guess.isCorrect === true)
+            if (isWinner) return setGameStatus(GameStatus.WINNER)
+            //Loser
+            const isLoser =
+                (!guesses.some(guess => guess.isCorrect === true) &&
+                    !hasGuessesRemaining) ||
+                !hasHintsRemaining
+            if (isLoser) {
+                return setGameStatus(GameStatus.LOSER)
+            }
+
             const isGameOver =
                 !hasGuessesRemaining ||
                 isLoser ||
                 isWinner ||
                 !hasHintsRemaining
 
-            setGameStatus(
-                isGameOver ? GameStatus.GAME_OVER : GameStatus.PLAYING
-            )
+            setGameStatus(isGameOver ? GameStatus.LOSER : GameStatus.PLAYING)
         },
-        [country.capital, hintCount, setGameStatus]
+        [country.capital, setGameStatus]
     )
 
     // Load game state from localStorage
@@ -89,8 +96,11 @@ export default function CapitalsGame() {
     }, [setGameStateSlices])
     useEffect(() => {
         const storedGuesses = loadGuesses()
-        checkGameStatus(storedGuesses)
-    }, [checkGameStatus, gameStateSlices])
+        checkGameStatus(storedGuesses, hintCount)
+    }, [checkGameStatus, gameStateSlices, hintCount])
+    useEffect(() => {
+        if (gameStatus === GameStatus.LOSER) toast.info(country.capital)
+    }, [country.capital, gameStatus])
 
     const guessCount = new Set([...gameStateSlices]).size
     const hasHintsRemaining = new Set([...country.capital]).size >= hintCount
@@ -141,6 +151,9 @@ export default function CapitalsGame() {
         saveHintCount(newCount)
     }
 
+    const gameOver =
+        gameStatus === GameStatus.LOSER || gameStatus === GameStatus.WINNER
+
     return (
         <>
             <Heading name={country.name} emoji={country.emoji} />
@@ -148,7 +161,7 @@ export default function CapitalsGame() {
             <GuessGridContainer gameSliceData={gameStateSlices} />
             <CountrySelect />
             <ButtonsContainer
-                gameOver={gameStatus === GameStatus.GAME_OVER}
+                gameOver={gameOver}
                 handleGuessClick={handleGuessClick}
                 hasHintsRemaining={hasHintsRemaining}
                 gameStateSlices={gameStateSlices}

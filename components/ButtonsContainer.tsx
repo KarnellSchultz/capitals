@@ -4,12 +4,12 @@ import { useCopyToClipboard } from '../Hooks/useCopyToClipboard'
 import type { Guess } from '../utils/localStorageHelpers/guesses'
 import { dayOfYear } from '../utils/todayUtils'
 
-type Props = {
+type ButtonsContainerProps = {
     handleGuessClick: () => void
     handleHintCountClick: () => void
-    gameOver: boolean
     hasHintsRemaining: boolean
     gameStateSlices: Guess[]
+    gameOver: boolean
 }
 
 export const ButtonsContainer = ({
@@ -18,7 +18,7 @@ export const ButtonsContainer = ({
     handleHintCountClick,
     hasHintsRemaining,
     gameStateSlices,
-}: Props) => {
+}: ButtonsContainerProps) => {
     const [parent] = useAutoAnimate()
     const [_, copyToClipboard] = useCopyToClipboard()
 
