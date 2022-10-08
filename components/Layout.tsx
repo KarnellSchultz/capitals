@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import { NextRouter, useRouter } from 'next/router'
 import { Footer } from './Footer'
 import { Nav } from './Nav'
 
@@ -7,19 +7,18 @@ type LayoutProps = {
     children: React.ReactNode
 }
 
+const getTitle = (route: NextRouter) => {
+    if (route.pathname === '/') return 'Capitals Magellan'
+    return route.pathname
+        .replaceAll('-', ' ')
+        .replaceAll('/', '')
+        .split(' ')
+        .map(word => word.charAt(0).toLocaleUpperCase() + word.slice(1) + ' ')
+        .join(' ')
+}
+
 const Layout = ({ children }: LayoutProps) => {
     const router = useRouter()
-
-    const getTitle = () => {
-        if (router.pathname === '/') return 'Capitals Magellan'
-        return router.pathname
-            .replaceAll('-', ' ')
-            .replaceAll('/', '')
-            .split(' ')
-            .map(
-                word => word.charAt(0).toLocaleUpperCase() + word.slice(1) + ' '
-            ).join(" ")
-    }
 
     return (
         <>
@@ -46,7 +45,7 @@ const Layout = ({ children }: LayoutProps) => {
                     name="description"
                     content="Capital game to guess the worlds capitals"
                 />
-                <title>{getTitle()}</title>
+                <title>{getTitle(router)}</title>
             </Head>
 
             <div className="grid sm:gap-4 sm:grid-cols-8 h-screen">
