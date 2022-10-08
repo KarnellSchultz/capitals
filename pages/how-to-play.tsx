@@ -52,8 +52,7 @@ export default function howToPlay() {
                 <h2 className="text-2xl my-2 text-center">Hints</h2>
                 <ul>
                     <li>
-                        Each time you click the Hint button you will get a to
-                        see a new letter of the capital.
+                        Each time you guess you get a new letter of the capital
                     </li>
                     <Spacer />
                     <li>
