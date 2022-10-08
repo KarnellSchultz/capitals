@@ -129,10 +129,12 @@ export default function CapitalsGame() {
         const validatedAnswer = isCorrectCheck(country.capital, selectValue)
         if (validatedAnswer) toast.success(`🎉  Magellan would be proud  🎉`)
 
-        const selectedCountryDetails = countriesList.find(
-            country => country.capital === selectValue
-        )
-        toast.info(`🤔 - that's ${selectedCountryDetails?.name}'s capital`)
+        if (!validatedAnswer) {
+            const selectedCountryDetails = countriesList.find(
+                country => country.capital === selectValue
+            )
+            toast.info(`🤔 - that's ${selectedCountryDetails?.name}'s capital`)
+        }
 
         const newSlice = [
             ...storedGuesses,
