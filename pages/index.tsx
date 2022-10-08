@@ -17,6 +17,7 @@ import {
 
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { countriesList } from '../constants/countries'
 
 const MAX_GUESSES = 6
 
@@ -30,7 +31,6 @@ export default function CapitalsGame() {
         selectValue,
         gameStateSlices,
         setGameStateSlices,
-        isCorrect,
         setIsCorrect,
         gameStatus,
         setGameStatus,
@@ -39,7 +39,6 @@ export default function CapitalsGame() {
             selectValue,
             gameStateSlices,
             setGameStateSlices,
-            isCorrect,
             setIsCorrect,
             gameStatus,
             setGameStatus,
@@ -47,7 +46,6 @@ export default function CapitalsGame() {
             selectValue,
             gameStateSlices,
             setGameStateSlices,
-            isCorrect,
             setIsCorrect,
             gameStatus,
             setGameStatus,
@@ -130,6 +128,11 @@ export default function CapitalsGame() {
 
         const validatedAnswer = isCorrectCheck(country.capital, selectValue)
         if (validatedAnswer) toast.success(`🎉  Magellan would be proud  🎉`)
+
+        const selectedCountryDetails = countriesList.find(
+            country => country.capital === selectValue
+        )
+        toast.info(`🤔 - that's ${selectedCountryDetails?.name}'s capital`)
 
         const newSlice = [
             ...storedGuesses,
