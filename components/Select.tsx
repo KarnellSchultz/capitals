@@ -4,9 +4,13 @@ import ReactSelect from 'react-select'
 import { useCapitalGameStore } from '../stores/capitalGameStore'
 
 type CountrySelectProps = {
+    gameOver: boolean
     handleGuessClick: () => void
 }
-export const CountrySelect = ({ handleGuessClick }: CountrySelectProps) => {
+export const CountrySelect = ({
+    handleGuessClick,
+    gameOver,
+}: CountrySelectProps) => {
     const setSelectValue = useCapitalGameStore(
         ({ setSelectValue }) => setSelectValue
     )
@@ -36,6 +40,7 @@ export const CountrySelect = ({ handleGuessClick }: CountrySelectProps) => {
             }}>
             <div className="w-ful mb-1">
                 <ReactSelect
+                    isDisabled={gameOver}
                     onChange={e => onChange(e?.value ?? '')}
                     options={options}
                 />
