@@ -3,7 +3,10 @@ import { countries } from 'countries-list'
 import ReactSelect from 'react-select'
 import { useCapitalGameStore } from '../stores/capitalGameStore'
 
-export const CountrySelect = () => {
+type CountrySelectProps = {
+    handleGuessClick: () => void
+}
+export const CountrySelect = ({ handleGuessClick }: CountrySelectProps) => {
     const setSelectValue = useCapitalGameStore(
         ({ setSelectValue }) => setSelectValue
     )
@@ -26,11 +29,17 @@ export const CountrySelect = () => {
     }
 
     return (
-        <div className="w-ful mb-1">
-            <ReactSelect
-                onChange={e => onChange(e?.value ?? '')}
-                options={options}
-            />
-        </div>
+        <form
+            onSubmit={e => {
+                e.preventDefault()
+                handleGuessClick()
+            }}>
+            <div className="w-ful mb-1">
+                <ReactSelect
+                    onChange={e => onChange(e?.value ?? '')}
+                    options={options}
+                />
+            </div>
+        </form>
     )
 }

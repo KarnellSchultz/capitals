@@ -6,8 +6,7 @@ import { dayOfYear } from '../utils/todayUtils'
 
 type ButtonsContainerProps = {
     handleGuessClick: () => void
-    handleHintCountClick: () => void
-    hasHintsRemaining: boolean
+    hasHintsRemaining?: boolean
     gameStateSlices: Guess[]
     gameOver: boolean
 }
@@ -15,8 +14,6 @@ type ButtonsContainerProps = {
 export const ButtonsContainer = ({
     handleGuessClick,
     gameOver,
-    handleHintCountClick,
-    hasHintsRemaining,
     gameStateSlices,
 }: ButtonsContainerProps) => {
     const [parent] = useAutoAnimate()
@@ -59,26 +56,15 @@ export const ButtonsContainer = ({
                 disabled={gameOver}>
                 Guess
             </button>
-            <button
-                className="w-full rounded py-1 px-6 my-1 border-2
-                disabled:bg-zinc-300 disabled:cursor-not-allowed
-                hover:bg-zinc-200 hover:border-zinc-300
-                "
-                onClick={handleHintCountClick}
-                disabled={gameOver || !hasHintsRemaining}>
-                Hint
-            </button>
-            <div>
-                {gameOver ? (
-                    <button
-                        className="w-full rounded py-1 px-6 border-2
+            <div hidden={!gameOver}>
+                <button
+                    className="w-full rounded py-1 px-6 border-2
                     disabled:bg-slate-300 disabled:cursor-not-allowed
                     bg-lime-500 hover:bg-lime-400
                     "
-                        onClick={handleShareClick}>
-                        Share
-                    </button>
-                ) : null}
+                    onClick={handleShareClick}>
+                    Share
+                </button>
             </div>
         </div>
     )

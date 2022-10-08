@@ -61,7 +61,7 @@ export default function CapitalsGame() {
             const hasHintsRemaining =
                 new Set([...country.capital]).size >= hintCount
 
-            //WInner
+            //Winner
             const isWinner = guesses.some(guess => guess.isCorrect === true)
             if (isWinner) return setGameStatus(GameStatus.WINNER)
             //Loser
@@ -113,11 +113,13 @@ export default function CapitalsGame() {
     }
 
     const handleGuessClick = () => {
+        const { count } = loadHintCount()
+        const newCount = count + 1
         const storedGuesses = loadGuesses()
         const guessArray = storedGuesses.map(({ guess }) =>
             guess.toLocaleLowerCase()
         )
-        // add more validation
+        // todo add more validation
         if (!selectValue) return
         if (
             guessCount > 0 &&
@@ -139,16 +141,16 @@ export default function CapitalsGame() {
             },
         ]
 
+        // handle hintCounts
+        if (!validatedAnswer) {
+            setHintCount(newCount)
+            saveHintCount(newCount)
+        }
+
         setIsCorrect(validatedAnswer)
+        // handle gameState
         setGameStateSlices(newSlice)
         saveGuesses(newSlice)
-    }
-
-    const handleHintCountClick = () => {
-        const { count } = loadHintCount()
-        const newCount = count + 1
-        setHintCount(newCount)
-        saveHintCount(newCount)
     }
 
     const gameOver =
@@ -159,13 +161,12 @@ export default function CapitalsGame() {
             <Heading name={country.name} emoji={country.emoji} />
             <HintDetails capital={country.capital} hintCount={hintCount} />
             <GuessGridContainer gameSliceData={gameStateSlices} />
-            <CountrySelect />
+            <CountrySelect handleGuessClick={handleGuessClick} />
             <ButtonsContainer
                 gameOver={gameOver}
                 handleGuessClick={handleGuessClick}
                 hasHintsRemaining={hasHintsRemaining}
                 gameStateSlices={gameStateSlices}
-                handleHintCountClick={() => handleHintCountClick()}
             />
             <ToastContainer
                 style={{ textAlign: 'center' }}
