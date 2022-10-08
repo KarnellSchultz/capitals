@@ -129,18 +129,15 @@ export default function CapitalsGame() {
         const validatedAnswer = isCorrectCheck(country.capital, selectValue)
         if (validatedAnswer) toast.success(`🎉  Magellan would be proud  🎉`)
 
-        if (!validatedAnswer) {
-            const selectedCountryDetails = countriesList.find(
-                country => country.capital === selectValue
-            )
-            toast.info(`🤔 - that's ${selectedCountryDetails?.name}'s capital`)
-        }
+        const selectedCountryDetails = countriesList.find(
+            country => country.capital === selectValue
+        )
 
         const newSlice = [
             ...storedGuesses,
             {
                 hintCount,
-                guess: selectValue,
+                guess: `${selectValue} - ${selectedCountryDetails?.name}  ${selectedCountryDetails?.emoji}`,
                 guesses: [...guessArray, selectValue],
                 isCorrect: validatedAnswer,
             },
@@ -166,7 +163,10 @@ export default function CapitalsGame() {
             <Heading name={country.name} emoji={country.emoji} />
             <HintDetails capital={country.capital} hintCount={hintCount} />
             <GuessGridContainer gameSliceData={gameStateSlices} />
-            <CountrySelect handleGuessClick={handleGuessClick} />
+            <CountrySelect
+                gameOver={gameOver}
+                handleGuessClick={handleGuessClick}
+            />
             <ButtonsContainer
                 gameOver={gameOver}
                 handleGuessClick={handleGuessClick}
