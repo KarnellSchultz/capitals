@@ -8,7 +8,7 @@ export default function howToPlay() {
             <h2 className="text-2xl text-center my-4">How To Play</h2>
             <ul>
                 <li>Guess the Capital in 6 guesses.</li>
-                <li>Each guess must be a valid country.</li>
+                <li>Each guess must be a valid capital.</li>
                 <li>A correct guess will see an 🎉. </li>
                 <li>An incorrect guess will see an 🚫.</li>
             </ul>
