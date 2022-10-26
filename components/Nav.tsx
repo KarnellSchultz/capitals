@@ -12,9 +12,7 @@ export const Nav = () => {
                 </Link>
             </div>
             <Link href={'/'} passHref>
-                <a>
-                    <CapitalsLogo size="LARGE" />
-                </a>
+                <CapitalsLogo size="LARGE" />
             </Link>
             <div className="text-2xl">
                 <Link href={'/settings'} passHref>
