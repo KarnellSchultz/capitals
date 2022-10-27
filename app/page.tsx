@@ -1,3 +1,5 @@
+'use client'
+
 import { GameStatus, useCapitalGameStore } from '../stores/capitalGameStore'
 import { HintDetails } from '../components/HintDetails'
 import { CountrySelect } from '../components/Select'
