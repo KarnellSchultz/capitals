@@ -3,13 +3,7 @@
 import { useState } from 'react'
 import Switch from 'react-switch'
 
-export default function SettingsPage({
-    params,
-    searchParams,
-}: {
-    params: { slug: string }
-    searchParams: { id: string }
-}) {
+export default function SettingsPage() {
     const [checked, setChecked] = useState(false)
 
     const handleChange = () => {
