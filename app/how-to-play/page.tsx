@@ -1,6 +1,6 @@
-import { HintDetails } from '../components/HintDetails'
-import { MyLink } from '../components/MyLink'
-import { Spacer } from '../components/Spacer'
+import { HintDetails } from '../../components/HintDetails'
+import { MyLink } from '../../components/MyLink'
+import { Spacer } from '../../components/Spacer'
 
 export default function howToPlay() {
     return (
