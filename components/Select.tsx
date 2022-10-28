@@ -1,3 +1,5 @@
+'use-client'
+
 import { useMemo } from 'react'
 import { countries } from 'countries-list'
 import ReactSelect from 'react-select'

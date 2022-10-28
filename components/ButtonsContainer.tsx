@@ -1,3 +1,5 @@
+'use client'
+
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { toast } from 'react-toastify'
 import { useCopyToClipboard } from '../Hooks/useCopyToClipboard'

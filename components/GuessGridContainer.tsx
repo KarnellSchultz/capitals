@@ -1,3 +1,5 @@
+'use client'
+
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import type { Guess } from '../utils/localStorageHelpers/guesses'
 
