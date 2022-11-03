@@ -23,6 +23,12 @@ export default function Head() {
                 name="description"
                 content="Capital game to guess the worlds capitals"
             />
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+            />
+            <meta name="theme-color" content="#ffffff" />
+
             <title>Capitals</title>
         </>
     )
