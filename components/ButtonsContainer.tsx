@@ -50,9 +50,10 @@ export const ButtonsContainer = ({
     return (
         <div ref={parent as any}>
             <button
-                className="w-full rounded py-1 px-6 my-1 border-2
+                className="w-full rounded py-1 px-6 my-1 border-2 dark:border-zinc-300
                 disabled:bg-zinc-300 disabled:cursor-not-allowed
                 hover:bg-zinc-200 hover:border-zinc-300
+                dark:hover:bg-zinc-700 dark:hover:text-white
                 "
                 onClick={handleGuessClick}
                 disabled={gameOver}>
@@ -62,8 +63,8 @@ export const ButtonsContainer = ({
                 <button
                     className="w-full rounded py-1 px-6 border-2
                     disabled:bg-slate-300 disabled:cursor-not-allowed
-                    bg-lime-500 hover:bg-lime-400
-                    "
+                    dark:bg-emerald-700 hover:dark:bg-emerald-800 dark:hover:text-white
+                    bg-lime-500 hover:bg-lime-400"
                     onClick={handleShareClick}>
                     Share
                 </button>

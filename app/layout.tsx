@@ -1,6 +1,8 @@
 import { Footer } from '../components/Footer'
 import { Nav } from '../components/Nav'
+
 import '../styles/globals.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 type LayoutProps = {
     children: React.ReactNode
@@ -8,7 +10,7 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
     return (
-        <html lang="en" className="bg-white">
+        <html lang="en" className="bg-white dark:bg-zinc-800 dark:text-zinc-300">
             <body className="grid sm:gap-4 sm:grid-cols-8 h-screen">
                 <div
                     className=" sm:col-start-2 sm:col-span-6 md:col-start-3 md:col-span-4 mx-4

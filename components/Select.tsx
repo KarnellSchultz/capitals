@@ -40,7 +40,7 @@ export const CountrySelect = ({
                 e.preventDefault()
                 handleGuessClick()
             }}>
-            <div className="w-ful mb-1">
+            <div className="w-ful mb-1 dark:text-zinc-800 ">
                 <ReactSelect
                     isDisabled={gameOver}
                     onChange={e => onChange(e?.value ?? '')}

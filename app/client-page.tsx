@@ -18,11 +18,10 @@ import {
 } from '../utils/localStorageHelpers/guesses'
 
 import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { countriesList } from '../constants/countries'
 
 const MAX_GUESSES = 6
-export const runtime = 'experimental-edge'; // 'node.js' (default) | 'experimental-edge'
+export const runtime = 'experimental-edge' // 'node.js' (default) | 'experimental-edge'
 
 export function CapitalsGame() {
     const country = useCapitalGameStore(({ country }) => country)
