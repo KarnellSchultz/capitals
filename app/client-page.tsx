@@ -160,6 +160,11 @@ export function CapitalsGame() {
     const gameOver =
         gameStatus === GameStatus.LOSER || gameStatus === GameStatus.WINNER
 
+    const toasterTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light'
+
     return (
         <>
             <Heading name={country.name} emoji={country.emoji} />
@@ -177,6 +182,7 @@ export function CapitalsGame() {
             />
             <ToastContainer
                 style={{ textAlign: 'center' }}
+                theme={toasterTheme}
                 position="top-center"
                 autoClose={3000}
                 newestOnTop={false}
