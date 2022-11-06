@@ -1,8 +1,8 @@
 import { Footer } from '../components/Footer'
 import { Nav } from '../components/Nav'
 
-import '../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
+import '../styles/globals.css'
 
 type LayoutProps = {
     children: React.ReactNode
