@@ -1,3 +1,11 @@
 export default function Head() {
-    return <title>Settings</title>
+    return (
+        <>
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+            />
+            <title>Settings</title>
+        </>
+    )
 }

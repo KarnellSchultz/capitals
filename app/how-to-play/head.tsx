@@ -1,3 +1,11 @@
 export default function Head() {
-    return <title>How-to-play</title>
+    return (
+        <>
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+            />
+            <title>How-to-play</title>
+        </>
+    )
 }
