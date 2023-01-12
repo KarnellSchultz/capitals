@@ -1,5 +1,5 @@
 import { Country } from 'countries-list'
-import create from 'zustand'
+import { create } from 'zustand'
 import type { Guess } from '../utils/localStorageHelpers/guesses'
 import { getTodaysCountry } from '../utils/todayUtils'
 

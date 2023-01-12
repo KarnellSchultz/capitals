@@ -8,6 +8,7 @@ type HintDetailsProps = {
     hintCount: number
 }
 export const HintDetails = ({ capital, hintCount }: HintDetailsProps) => {
+    console.log("🚀 ~ file: HintDetails.tsx:11 ~ HintDetails ~ capital", capital)
     const [parent] = useAutoAnimate()
 
     const hintedWord = capital.substring(0, hintCount)
