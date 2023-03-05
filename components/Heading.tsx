@@ -1,5 +1,3 @@
-'use client'
-
 type Props = { name: string; emoji: string }
 
 export const Heading = ({ name, emoji }: Props) => {

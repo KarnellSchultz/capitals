@@ -19,12 +19,17 @@ import {
 
 import { toast, ToastContainer } from 'react-toastify'
 import { countriesList } from '../constants/countries'
+import { Country } from 'countries-list'
 
 const MAX_GUESSES = 6
-export const runtime = 'experimental-edge' // 'node.js' (default) | 'experimental-edge'
+export const runtime = 'experimental-edge'
 
-export function CapitalsGame() {
-    const country = useCapitalGameStore(({ country }) => country)
+type Props = {
+    country: Country
+    children: React.ReactNode
+}
+
+export function CapitalsGame({ country, children }: Props) {
     const [hintCount, setHintCount] = useCapitalGameStore(
         ({ hintCount, setHintCount }) => [hintCount, setHintCount]
     )
@@ -64,6 +69,7 @@ export function CapitalsGame() {
             //Winner
             const isWinner = guesses.some(guess => guess.isCorrect === true)
             if (isWinner) return setGameStatus(GameStatus.WINNER)
+
             //Loser
             const isLoser =
                 (!guesses.some(guess => guess.isCorrect === true) &&
@@ -73,13 +79,15 @@ export function CapitalsGame() {
                 return setGameStatus(GameStatus.LOSER)
             }
 
-            const isGameOver =
-                !hasGuessesRemaining ||
-                isLoser ||
-                isWinner ||
-                !hasHintsRemaining
+            //Playing or Loser
+            const isGameOver = new Set([
+                !hasGuessesRemaining,
+                !hasHintsRemaining,
+                isLoser,
+                isWinner,
+            ]).has(true)
 
-            setGameStatus(isGameOver ? GameStatus.LOSER : GameStatus.PLAYING)
+            setGameStatus(!isGameOver ? GameStatus.PLAYING : GameStatus.LOSER)
         },
         [country.capital, setGameStatus]
     )
@@ -167,7 +175,7 @@ export function CapitalsGame() {
 
     return (
         <>
-            <Heading name={country.name} emoji={country.emoji} />
+            {children}
             <HintDetails capital={country.capital} hintCount={hintCount} />
             <GuessGridContainer gameSliceData={gameStateSlices} />
             <CountrySelect
