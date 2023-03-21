@@ -356,10 +356,10 @@
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/node@18.15.3":
-  version "18.15.3"
-  resolved "https://registry.npmjs.org/@types/node/-/node-18.15.3.tgz"
-  integrity sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==
+"@types/node@18.15.5":
+  version "18.15.5"
+  resolved "https://registry.npmjs.org/@types/node/-/node-18.15.5.tgz"
+  integrity sha512-Ark2WDjjZO7GmvsyFFf81MXuGTA/d6oP38anyxWOL6EREyBKAxKoFHwBhaZxCfLRLpO8JgVXwqOwSwa7jRcjew==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2649,37 +2649,37 @@ tsutils@^3.21.0:
 
 turbo-darwin-64@1.8.4:
   version "1.8.4"
-  resolved "https://registry.yarnpkg.com/turbo-darwin-64/-/turbo-darwin-64-1.8.4.tgz#3774a03f9e8e6b1b6e550415088f7c11deb642ea"
+  resolved "https://registry.npmjs.org/turbo-darwin-64/-/turbo-darwin-64-1.8.4.tgz"
   integrity sha512-5fKhrm8Skl5niCcYnmNc1pNDAH48EHS7yio7s06btlTjvSdSsT+Dw+wQiAmGrAmpbqN3Xr7cKZwD749/Q1zS/A==
 
 turbo-darwin-arm64@1.8.4:
   version "1.8.4"
-  resolved "https://registry.yarnpkg.com/turbo-darwin-arm64/-/turbo-darwin-arm64-1.8.4.tgz#4fd45992e03d2eb0e440802dc544f8d12e578c7d"
+  resolved "https://registry.npmjs.org/turbo-darwin-arm64/-/turbo-darwin-arm64-1.8.4.tgz"
   integrity sha512-4+5KbJ4msMB8/O5yj1TArfPw8XU0BYwJC35d/fAHb+NcVOg0XbOEOeYUcstMgAbYmD0aOjCKAvdBN85xdsdjGg==
 
 turbo-linux-64@1.8.4:
   version "1.8.4"
-  resolved "https://registry.yarnpkg.com/turbo-linux-64/-/turbo-linux-64-1.8.4.tgz#f0d1dced85f6df561926e7231d1b8e4e152c228c"
+  resolved "https://registry.npmjs.org/turbo-linux-64/-/turbo-linux-64-1.8.4.tgz"
   integrity sha512-c97Cjgm6aJ0KeivLJVEherImI2FQuQPfajwWgFWo5+WD11Zwy8ZTn7QrLJ7RMJr2dXnSo50yfy+xr/r6D55A0w==
 
 turbo-linux-arm64@1.8.4:
   version "1.8.4"
-  resolved "https://registry.yarnpkg.com/turbo-linux-arm64/-/turbo-linux-arm64-1.8.4.tgz#46bece318fb3479f34a5f067fa0f6e8be89ed6a5"
+  resolved "https://registry.npmjs.org/turbo-linux-arm64/-/turbo-linux-arm64-1.8.4.tgz"
   integrity sha512-FgA4LaI3CbSxpABxGydRBZWGoj03hiUWNoFo6GLdkDHam3x7Ky85Y9sTHOV59teCEQHjI04OfsjLulOhIsWh3Q==
 
 turbo-windows-64@1.8.4:
   version "1.8.4"
-  resolved "https://registry.yarnpkg.com/turbo-windows-64/-/turbo-windows-64-1.8.4.tgz#d12de07536083280c9af9ebd7395fc9c6318d18b"
+  resolved "https://registry.npmjs.org/turbo-windows-64/-/turbo-windows-64-1.8.4.tgz"
   integrity sha512-AO3Wo+uGo0fs5/7fBlp05WjhnjYLoiP5NeZ7Up3PyR64MnkkwPM5a2hks2778ZgE24dTha7/CVGF1sxn4tF7Kw==
 
 turbo-windows-arm64@1.8.4:
   version "1.8.4"
-  resolved "https://registry.yarnpkg.com/turbo-windows-arm64/-/turbo-windows-arm64-1.8.4.tgz#7f76c0794edc003bae34b597cbb6509767b559d8"
+  resolved "https://registry.npmjs.org/turbo-windows-arm64/-/turbo-windows-arm64-1.8.4.tgz"
   integrity sha512-BAV8gTcu3q89rcMvTo7AfkSgCEaZvW9dH6SLqpLcDKACA/rdLhnn9WFTchj7DIHJIcs2+Do5KCjLoV4KhrC2YA==
 
-turbo@^1.8.4:
+turbo@^1.6.1:
   version "1.8.4"
-  resolved "https://registry.yarnpkg.com/turbo/-/turbo-1.8.4.tgz#f42ce43ee68e1252e2afd78d6592c9f0c033e78f"
+  resolved "https://registry.npmjs.org/turbo/-/turbo-1.8.4.tgz"
   integrity sha512-ziVcsr0zhdmgfEzkaYF7q9h6BhBl4pDo1miRNsxIbEuxXQKaFGmsyW0WBM8/qaAC41by5lRHOdaZo9QMArmEJQ==
   optionalDependencies:
     turbo-darwin-64 "1.8.4"
