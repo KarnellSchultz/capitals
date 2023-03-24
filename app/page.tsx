@@ -1,3 +1,7 @@
+export const config = {
+    runtime: 'edge',
+}
+
 import { Heading } from '../components/Heading'
 import { getTodaysCountry } from '../utils/todayUtils'
 import { CapitalsGame } from './client-page'

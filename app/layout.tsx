@@ -1,3 +1,8 @@
+export const metadata = {
+    title: "Capitals",
+       link:""
+}
+
 import { Footer } from '../components/Footer'
 import { Nav } from '../components/Nav'
 
