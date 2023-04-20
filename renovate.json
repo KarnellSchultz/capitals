@@ -1,12 +1,25 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:base"],
+    "extends": [
+      "config:base"
+    ],
+    "schedule": [
+      "after 10pm every weekday",
+      "before 5am every weekday",
+      "every weekend"
+    ],
+    "prCreation": "not-pending",
+    "stabilityDays": 2,
+    "labels": [
+      "deps"
+    ],
     "packageRules": [
-        {
-            "matchDepTypes": ["dependencies", "devDependencies"],
-            "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-            "automerge": true,
-            "labels": ["deps"]
-        }
+      {
+        "matchUpdateTypes": [
+          "major",
+          "minor",
+          "patch"
+        ],
+        "automerge": true
+      }
     ]
-}
+  }
