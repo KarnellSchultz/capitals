@@ -1,4 +1,10 @@
 import { DarkModeSwitch } from './dark-mode-switch'
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'Settings',
+  description: 'Settings for the Capitals game.',
+}
 
 export default function SettingsPage() {
     return (

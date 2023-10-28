@@ -1,13 +1,15 @@
-export const metadata = {
-    title: "Capitals",
-       link:""
-}
-
 import { Footer } from '../components/Footer'
 import { Nav } from '../components/Nav'
 
 import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.css'
+
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'Capitals',
+    description: 'A game to guess the capital of a country',
+}
 
 type LayoutProps = {
     children: React.ReactNode

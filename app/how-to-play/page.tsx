@@ -1,6 +1,12 @@
 import { HintDetails } from '../../components/HintDetails'
 import { MyLink } from '../../components/MyLink'
 import { Spacer } from '../../components/Spacer'
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'How to Play',
+  description: 'How to play the Capitals game.',
+}
 
 export default function howToPlay() {
     return (

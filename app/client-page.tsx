@@ -3,7 +3,6 @@
 import { GameStatus, useCapitalGameStore } from '../stores/capitalGameStore'
 import { HintDetails } from '../components/HintDetails'
 import { CountrySelect } from '../components/Select'
-import { Heading } from '../components/Heading'
 import { ButtonsContainer } from '../components/ButtonsContainer'
 import { GuessGridContainer } from '../components/GuessGridContainer'
 import { useCallback, useEffect } from 'react'
