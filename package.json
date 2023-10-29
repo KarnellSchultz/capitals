@@ -1,6 +1,6 @@
 {
-  "name": "capitals",
-  "version": "0.1.1",
+  "name": "capitals-magellan",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -21,17 +21,18 @@
     "zustand": "4.4.4"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^14.0.0",
     "@types/node": "20.8.9",
     "@types/react": "18.2.33",
     "@types/react-dom": "18.2.14",
     "autoprefixer": "10.4.16",
     "eslint": "8.52.0",
     "eslint-config-next": "13.3.0",
-    "eslint-config-prettier": "9.0.0",
+    "eslint-config-prettier": "^9.0.0",
     "postcss": "8.4.31",
     "prettier": "3.0.3",
     "tailwindcss": "3.3.5",
-    "turbo": "^1.6.1",
-    "typescript": "5.1.6"
+    "turbo": "^1.10",
+    "typescript": "5.2"
   }
 }

@@ -6,7 +6,7 @@ import '../styles/globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Capitals',
+    title: 'Capitals Magellan',
     description: 'A game to guess the capital of a country',
 }
 
