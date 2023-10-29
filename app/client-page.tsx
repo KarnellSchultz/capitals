@@ -40,21 +40,25 @@ export function CapitalsGame({ country, children }: Props) {
         setIsCorrect,
         gameStatus,
         setGameStatus,
-    } = useCapitalGameStore(
-        ({
+        toasterTheme,
+        setToasterTheme
+    } = useCapitalGameStore(({
             selectValue,
             gameStateSlices,
             setGameStateSlices,
             setIsCorrect,
             gameStatus,
             setGameStatus,
+            toasterTheme,
+            setToasterTheme,
         }) => ({
             selectValue,
             gameStateSlices,
             setGameStateSlices,
             setIsCorrect,
             gameStatus,
-            setGameStatus,
+            setGameStatus,toasterTheme,
+            setToasterTheme,
         })
     )
 
@@ -108,6 +112,14 @@ export function CapitalsGame({ country, children }: Props) {
     useEffect(() => {
         if (gameStatus === GameStatus.LOSER) toast.info(country.capital)
     }, [country.capital, gameStatus])
+
+    useEffect(() => {
+    const toasterTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light'
+        setToasterTheme(toasterTheme)
+    }, [setToasterTheme])
 
     const guessCount = new Set([...gameStateSlices]).size
     const hasHintsRemaining = new Set([...country.capital]).size >= hintCount
@@ -167,10 +179,6 @@ export function CapitalsGame({ country, children }: Props) {
     const gameOver =
         gameStatus === GameStatus.LOSER || gameStatus === GameStatus.WINNER
 
-    const toasterTheme = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
-        ? 'dark'
-        : 'light'
 
     return (
         <>

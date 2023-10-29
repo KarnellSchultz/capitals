@@ -25,6 +25,8 @@ export type CapitalGameStore = {
     gameStateSlices: Guess[]
     isCorrect: boolean
     setIsCorrect: (value: boolean) => void
+    toasterTheme: 'light' | 'dark'
+    setToasterTheme: (theme: 'light' | 'dark') => void
 }
 
 export const useCapitalGameStore = create<CapitalGameStore>(set => ({
@@ -47,4 +49,6 @@ export const useCapitalGameStore = create<CapitalGameStore>(set => ({
     gameStateSlices: [],
     isCorrect: false,
     setIsCorrect: value => set(state => ({ ...state, isCorrect: value })),
+    toasterTheme: 'light',
+    setToasterTheme: theme => set(state => ({ ...state, toasterTheme: theme })),
 }))

@@ -1,6 +1,5 @@
 import { Footer } from '../components/Footer'
 import { Nav } from '../components/Nav'
-
 import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.css'
 
