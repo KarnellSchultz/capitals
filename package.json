@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "1.0.0-beta.6",
-    "countries-list": "2.6.1",
+    "countries-list": "3.1.0",
     "next": "^14.0.0",
     "react": "18.2.0",
     "react-countup": "6.5.0",

@@ -888,10 +888,10 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-countries-list@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.npmjs.org/countries-list/-/countries-list-2.6.1.tgz"
-  integrity sha512-jXM1Nv3U56dPQ1DsUSsEaGmLHburo4fnB7m+1yhWDUVvx5gXCd1ok/y3gXCjXzhqyawG+igcPYcAl4qjkvopaQ==
+countries-list@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/countries-list/-/countries-list-3.1.0.tgz#1cbe32f58659c7d6a1e744917689f24c84333ea8"
+  integrity sha512-HpTBLZba1VPTZSjUnUwR7SykxV7Z/7/+ZM5x5wi5tO99Qvom6bE2SC+AQ18016ujg3jSlYBbMITrHNnPAHSM9Q==
 
 countup.js@^2.8.0:
   version "2.8.0"
@@ -2774,6 +2774,7 @@ streamsearch@^1.1.0:
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -2834,6 +2835,7 @@ string.prototype.trimstart@^1.0.7:
     es-abstract "^1.22.1"
 
 "strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  name strip-ansi-cjs
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
