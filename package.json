@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@formkit/auto-animate": "1.0.0-beta.6",
+    "@formkit/auto-animate": "1.0.0-pre-alpha.3",
     "countries-list": "2.6.1",
     "next": "^14.0.0",
     "react": "18.2.0",
