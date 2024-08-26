@@ -32,7 +32,7 @@
     "postcss": "8.4.41",
     "prettier": "3.3.3",
     "tailwindcss": "3.4.10",
-    "turbo": "^1.10",
+    "turbo": "^2.0.0",
     "typescript": "5.5"
   }
 }
